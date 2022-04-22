@@ -9,7 +9,8 @@ export const appRoutes:Routes=[
     {path:"login",component:LogInComponentComponent},
     {path:"signin",component:SignInComponentComponent},
     {path:"play",component:PlayComponentComponent},
-    {path:"home",component:HomeComponent}
+    {path:"home",component:HomeComponent},
+    {path:"",redirectTo:"/home",pathMatch:"full"}
 
 ]
 
