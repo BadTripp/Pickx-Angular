@@ -1,0 +1,18 @@
+<div class="container text-center">
+    <h2>Sign in Pickx</h2>
+</div>
+<div class="container w-50">
+    
+        <div class="form-group">
+          <label for="exampleInputEmail1">Miner Name</label>
+          <input [style.color]="(nicknameIsValid)?'black':'red'"  (blur)="onBlurNickname()" (keyup)="onNicknameChange()"  [(ngModel)]="user.nickname" type="text" class="form-control" >
+          <span *ngIf="nicknameExist" class="badge badge-danger">This name is already taken dirty miner! </span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Super Secret Code</label>
+          <small id="emailHelp" class="form-text text-muted">Friend be careful, this password cannot be reset</small>
+          <input [style.color]="(passwordIsValid)?'black':'red'" (keyup)="onPasswordChange()"  [(ngModel)]="user.password" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button [disabled]="checkComplete" (click)="onSignin()" type="submit" class="btn btn-primary">Sign in</button>
+      
+</div>
