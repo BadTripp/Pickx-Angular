@@ -7,6 +7,7 @@ import { AngularFirestore } from "@angular/fire/compat/firestore";
 export class homeService{
 
     res:any[]=[];
+    loginConfirm:any[]=[]
     
     constructor(private fire:AngularFirestore){}
 
@@ -39,6 +40,23 @@ export class homeService{
         if(password.length > 8) return true
         else return false
 
+    }
+
+
+    //VALIDAZIONE LOGIN 
+    onLogin(nickname:string,password:string){
+        this.getAllUsers().subscribe((response)=>{
+            this.loginConfirm=response.map((elemento:any)=>{
+                if(elemento.payload.doc.data().nickname === nickname) {
+                    if(elemento.payload.doc.data().password === password){
+                        return true
+                    }
+                }
+                return false
+            })
+               
+        });
+        return this.loginConfirm
     }
 
 

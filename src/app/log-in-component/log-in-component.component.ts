@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { homeService } from '../home.service';
 
 
 @Component({
@@ -9,13 +10,23 @@ import { Router } from '@angular/router';
 })
 export class LogInComponentComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  userNickname=""
+  userPassword=""
+  error=false;
+
+  constructor(private route:Router,private homeService:homeService) { }
 
   ngOnInit(): void {
   }
 
+
+  errorReset(){
+    this.error=false
+  }
   onLoginComplete(){
-    this.route.navigate(["/play"]);
+
+    (this.homeService.onLogin(this.userNickname,this.userPassword).includes(true))?this.route.navigate(["/play"]):this.error=true
+    
   }
 
 }
