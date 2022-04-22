@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { homeService } from '../home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  leaderboard:any[]=[]
+  constructor(private homeService:homeService) { }
 
   ngOnInit(): void {
+    this.homeService.getAllUsers().subscribe((response)=>{
+      this.leaderboard=response.map((elemento:any)=>{
+          return elemento.payload.doc.data()
+      })
+      this.leaderboard.sort((a,b) => b.level - a.level);   
+  });
   }
+
 
 }

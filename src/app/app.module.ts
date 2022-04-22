@@ -10,7 +10,7 @@ import { PlayComponentComponent } from './play-component/play-component.componen
 import { HomeComponent } from './home/home.component';
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore"
 import { AngularFireModule } from '@angular/fire/compat';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 import { homeService } from './home.service';
 import { FormsModule } from '@angular/forms';
 

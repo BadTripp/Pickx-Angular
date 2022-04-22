@@ -19,14 +19,19 @@
       <div class="col ">
         
             <h2>Leaderboard</h2>
-            <ul class="list-group">
-                <li class="list-group-item">Primo</li>
-                <li class="list-group-item">asdasd</li>
-                <li class="list-group-item">Priasdasdmo</li>
-                <li class="list-group-item">Prw2123simo</li>
-                <li class="list-group-item">Pri131emo</li>
-              </ul>
-        
+            <table class="table table-dark">
+                <tr>
+                    <th>Level</th>
+                <th>Nickname</th>
+                </tr>
+                <tbody *ngFor="let leader of leaderboard | slice:0:5; let i=index"> <!-- Limita la leaderboard a 10 elementi-->
+            
+               <td >{{leader.level}}</td>
+               <td>{{leader.nickname}}</td>
+            
+           
+        </tbody>
+            </table>
         
             <h2>Events</h2>
             <div class="badge badge-primary text-wrap" >
