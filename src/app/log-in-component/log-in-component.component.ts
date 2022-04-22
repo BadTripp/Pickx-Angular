@@ -24,8 +24,10 @@ export class LogInComponentComponent implements OnInit {
     this.error=false
   }
   onLoginComplete(){
-
-    (this.homeService.onLogin(this.userNickname,this.userPassword).includes(true))?this.route.navigate(["/play"]):this.error=true
+    (this.homeService.onLogin(this.userNickname,this.userPassword).includes(true))?this.route.navigate(["/play"]):""
+    setTimeout(() => {
+      (this.homeService.onLogin(this.userNickname,this.userPassword).includes(true))?this.route.navigate(["/play"]):this.error=true
+    }, 500);
     
   }
 

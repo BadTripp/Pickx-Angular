@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { homeService } from '../home.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class SignInComponentComponent implements OnInit {
   checkComplete=true;
   nicknameExist=false;
 
-  constructor(private homeService:homeService) {
+  constructor(private route:Router,private homeService:homeService) {
     
    }
 
@@ -54,5 +55,6 @@ export class SignInComponentComponent implements OnInit {
 
   onSignin(){ //Inserisce l'utente nel db utilizzando il service 
     this.homeService.on_AddUser(this.user)
+    this.route.navigate(["/login"])
   }
 }
