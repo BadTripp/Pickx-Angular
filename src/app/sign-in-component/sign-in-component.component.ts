@@ -14,6 +14,7 @@ export class SignInComponentComponent implements OnInit {
     nickname:"",
     password:"",
     level:1,
+    online:false,
     inventory:<Inventory>{
       coal:1,
       rock:0,

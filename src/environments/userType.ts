@@ -2,6 +2,7 @@ export interface User {
     nickname: string;
     password: string;
     level: number;
+    online:boolean;
     inventory: Inventory;
   }
   export interface Inventory {

@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
+
 import { User } from "../environments/userType";
 import { Inventory } from "../environments/userType";
 import { homeService } from "./home.service";
@@ -15,6 +16,7 @@ export class playService implements OnInit {
          nickname: "",
          password: "",
          level: 0,
+         online:false,
          inventory:<Inventory> {
 
          }
@@ -25,20 +27,25 @@ export class playService implements OnInit {
         
     }
 
-    onAddRock(){
-        var userID=localStorage.getItem("idUser");
+    async onAddRock(){
+
         
-        if(this.homeService.loading===false){
-            this.userObj=this.homeService.userObj;
-            this.userObj.inventory.rock=this.userObj.inventory.rock+1
-            this.fire.collection("Users").doc(userID!).update(this.userObj)
-        }else{
-            setTimeout(()=>{this.onAddRock()},100)
-        }
+            var userID=localStorage.getItem("idUser");
+    
+                this.userObj=this.homeService.userObj;
+                this.userObj.inventory.rock=this.userObj.inventory.rock+1
+                await this.fire.collection("Users").doc(userID!).update(this.userObj)
+      
         
-       
+        // var userID=localStorage.getItem("idUser");
         
-        
+        // if(this.homeService.loading===false){
+        //     this.userObj=this.homeService.userObj;
+        //     this.userObj.inventory.rock=this.userObj.inventory.rock+1
+        //     this.fire.collection("Users").doc(userID!).update(this.userObj)
+        // }else{
+        //     setTimeout(()=>{this.onAddRock()},100)
+        // }     
     }
 
 

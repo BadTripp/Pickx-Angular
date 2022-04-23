@@ -10,14 +10,13 @@ import { playService } from '../play.service';
 export class PlayComponentComponent implements OnInit {
 
   userNickname:any
-  constructor(private playService:playService,private navController:navBarService) {
+  constructor(public playService:playService,private navController:navBarService) {
     
    }
 
   ngOnInit(): void {
     this.userNickname=localStorage.getItem('nick');
     this.navController.onUserLogin()
-    
   }
 
 }

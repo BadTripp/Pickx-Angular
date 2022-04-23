@@ -13,6 +13,7 @@ export class homeService{
         nickname: "",
         password: "",
         level: 0,
+        online:false,
         inventory:<Inventory> {
 
         }
@@ -20,7 +21,7 @@ export class homeService{
     }
     loading=true;
     constructor(private fire:AngularFirestore){
-        this.getUserObj()
+        
     }
 
     // VALIDAZIONE CAMPI REGISTRAZIONE 
@@ -85,10 +86,10 @@ export class homeService{
         return this.fire.collection("Users").snapshotChanges();
     }
 
-    getUserObj(){
+    async getUserObj(){
         this.loading=true;
         var userID=localStorage.getItem("idUser");
-        this.getAllUsers().subscribe((response)=>{
+        await this.getAllUsers().subscribe((response)=>{
             this.res=response.map((elemento:any)=>{
             (elemento.payload.doc.id === userID) ?this.userObj=elemento.payload.doc.data() :""
                 
@@ -97,4 +98,11 @@ export class homeService{
         });
         
     }
+    setOnlineUser(){
+
+    }
+    setOfflineUser(){
+
+    }
+
 }
