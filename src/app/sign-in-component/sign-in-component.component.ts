@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Inventory, User } from '../../environments/userType';
 import { homeService } from '../home.service';
 
 @Component({
@@ -9,12 +10,16 @@ import { homeService } from '../home.service';
 })
 export class SignInComponentComponent implements OnInit {
   
-  user = {
+  user:User= {
     nickname:"",
     password:"",
     level:1,
-    inventory:{
-      rock:1
+    inventory:<Inventory>{
+      coal:1,
+      rock:0,
+      iron:0,
+      gold:0,
+      crystals:0,
     }
   }
   nicknameIsValid=true;

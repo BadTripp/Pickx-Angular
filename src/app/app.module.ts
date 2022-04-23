@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { homeService } from './home.service';
 import { FormsModule } from '@angular/forms';
 import { navBarService } from './navbar.service';
+import { playService } from './play.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { navBarService } from './navbar.service';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [homeService,navBarService],
+  providers: [homeService,navBarService,playService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

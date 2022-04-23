@@ -36,6 +36,16 @@
                     <a class="nav-link" href="#" (click)="this.navController.onUserLogout()" [routerLink]="['/home']">Log out</a>
                   </li>
                 </ul>
+                <table>
+                    <tr>
+                    <td>Coal</td><td>{{this.homeService.userObj.inventory.coal}}</td>
+                    <td>Rock</td><td>{{this.homeService.userObj.inventory.rock}}</td>
+                    <td>Iron</td><td>{{this.homeService.userObj.inventory.iron}}</td>
+                    <td>Gold</td><td>{{this.homeService.userObj.inventory.gold}}</td>
+                    <td>Crystals</td><td>{{this.homeService.userObj.inventory.crystals}}</td>
+                    </tr>
+                </table>
+                
               </div>
         
     
