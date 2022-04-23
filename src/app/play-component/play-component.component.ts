@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { navBarService } from '../navbar.service';
 
 @Component({
   selector: 'app-play-component',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayComponentComponent implements OnInit {
 
-  constructor() { }
+  userNickname:any
+  constructor(private navController:navBarService) {
+    
+   }
 
   ngOnInit(): void {
+    this.userNickname=localStorage.getItem('nick');
+    this.navController.onUserLogin()
   }
 
 }

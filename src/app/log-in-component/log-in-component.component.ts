@@ -26,7 +26,11 @@ export class LogInComponentComponent implements OnInit {
   onLoginComplete(){
     (this.homeService.onLogin(this.userNickname,this.userPassword).includes(true))?this.route.navigate(["/play"]):""
     setTimeout(() => {
-      (this.homeService.onLogin(this.userNickname,this.userPassword).includes(true))?this.route.navigate(["/play"]):this.error=true
+      if(this.homeService.onLogin(this.userNickname,this.userPassword).includes(true)) {
+        this.route.navigate(["/play"])
+        localStorage.setItem('nick', this.userNickname);
+      }
+      else{this.error=true}
     }, 500);
     
   }

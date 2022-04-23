@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { homeService } from '../home.service';
 
 @Component({
@@ -9,9 +10,13 @@ import { homeService } from '../home.service';
 export class HomeComponent implements OnInit {
 
   leaderboard:any[]=[]
-  constructor(private homeService:homeService) { }
+  constructor(private homeService:homeService,private route:Router) { }
 
   ngOnInit(): void {
+    //CONTROLLO UTENTE GIA' LOGGATO
+      (localStorage.getItem('nick'))?this.route.navigate(["/play"]):"" 
+
+    //LEADERBOARD LOAD FROM DB 
     this.homeService.getAllUsers().subscribe((response)=>{
       this.leaderboard=response.map((elemento:any)=>{
           return elemento.payload.doc.data()
